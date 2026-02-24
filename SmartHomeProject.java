@@ -21,7 +21,13 @@ public class SmartHomeProject {
 		
 		System.out.print(myHouse.getDevices());
 		
+		Rule morningRule = new Rule("Morning Routine", 7, 9, true);
+		Room kitchen = new Room("Kitchen", morningRule);
+		kitchen.addDevice(kitchenLight);
+		kitchen.executeRule(8); // simulates 8am
 
+		System.out.println(kitchen);
+	
 	} // end of main
 
 } // end of class
