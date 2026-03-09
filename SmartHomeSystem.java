@@ -71,11 +71,11 @@ public class SmartHomeSystem {
 	        @Override
 	        public void run() {
 
-	            simulatedTime++;
+	            simulatedTime++; //increased the time by one minute
 
-	            if(simulatedTime >= 1440) simulatedTime = 0;
+	            if(simulatedTime >= 1440) simulatedTime = 0; //reset the time after 24 minutes
 
-	            executeRules(simulatedTime);
+	            executeRules(simulatedTime); //runs executeRules, which checks if it is time to run commands
 
 	            //prints simulated time to console every real minute
 	            hour = simulatedTime / 60;
@@ -84,7 +84,7 @@ public class SmartHomeSystem {
 	            if(simulatedTime % 60 == 0) System.out.println(timeString);
 	        }
 
-	    }, 0, 1000);
+	    }, 0, 1000); //every second
 
 	}
 
