@@ -3,30 +3,16 @@ import java.util.ArrayList;
 
 public class Room {
     private String name;
-    private ArrayList<Devices> devices;
-    private Rule rule;
+    private ArrayList<Devices> roomDevices;
 
-    public Room(String name, Rule rule) {
+    public Room(String name) {
         this.name = name;
-        this.rule = rule;
-        this.devices = new ArrayList<>();
+        this.roomDevices = new ArrayList<>();
     }
 
     // add device 
     public void addDevice(Devices device) {
-        devices.add(device);
-    }
-
-    // executes the rule against current time
-  
-    public void executeRule(int currentHour) {
-        if (currentHour >= rule.getStartTime() && currentHour < rule.getEndTime()) {
-            if (rule.getDeviceShouldBeOn()) {
-                for (Devices d : devices) d.setOn();
-            }
-        } else {
-            for (Devices d : devices) d.setOff();
-        }
+        roomDevices.add(device);
     }
 
     // getters
@@ -35,15 +21,12 @@ public class Room {
     }
 
     public ArrayList<Devices> getDevices() {
-        return devices;
+        return roomDevices;
     }
 
-    public Rule getRule() {
-        return rule;
-    }
 
     @Override
     public String toString() {
-        return "Room: " + name + " | Rule: " + rule.getRuleName() + " | Devices: " + devices;
+        return "Room: " + name + " | Devices: " + roomDevices;
     }
 }
