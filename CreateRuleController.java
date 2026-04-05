@@ -761,6 +761,37 @@ public class CreateRuleController {
 	}
 
 	
+	public void handleDeviceClickedFromHome(String deviceId) {
+	    if (deviceId == null) return;
+
+	    // Only allow this when building a DEVICE rule
+	    if (!deviceRuleRadioButton.isSelected()) {
+	        return;
+	    }
+
+	    // Make sure the device list is showing
+	    ruleTargetSelectionListView.setVisible(true);
+	    ruleTargetSelectionListView.setManaged(true);
+	    ruleTargetSelectionListView.setItems((ObservableList) mainMenuController.getDevices());
+
+	    for (Object obj : ruleTargetSelectionListView.getItems()) {
+	        if (obj instanceof Devices device && device.getDeviceID().equals(deviceId)) {
+
+	            var selectionModel = ruleTargetSelectionListView.getSelectionModel();
+	            int index = ruleTargetSelectionListView.getItems().indexOf(obj);
+
+	            if (selectionModel.isSelected(index)) {
+	                selectionModel.clearSelection(index);
+	            } else {
+	                selectionModel.select(index);
+	            }
+
+	            ruleTargetSelectionListView.scrollTo(index);
+	            break;
+	        }
+	    }
+	}
+	
 	//creates the dark theme
 	private void applyDarkTheme() {
 	    String panel = "#1E1E1E";

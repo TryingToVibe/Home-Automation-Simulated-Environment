@@ -113,6 +113,10 @@ public class MainMenuController {
 
 	@FXML
 	private CreateRuleController createRuleController;
+	
+	public CreateRuleController getCreateRulesController() {
+		return createRuleController;
+	}
 
 
 	private SmartHomeSystem system;
